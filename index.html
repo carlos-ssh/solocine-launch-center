@@ -26,7 +26,10 @@
       "Suscripciones y planes (billing logic)",
       "Background jobs (Sidekiq workers)",
       "CI/CD GitHub Actions (staging + prod)",
-      "Infra Docker + Nginx + Cloudflare Tunnel"
+      "Infra Docker + Nginx + Cloudflare Tunnel",
+      "Auth consolidado: remove next-auth/better-auth (cleanup)",
+      "Fix prod: revert session_store (OmniAuth NoSessionError)",
+      "Seguridad: eliminados logs que filtraban sesion y tokens"
     ];
     const blockers = [
       { label: "Payment Gateway (Stripe/MercadoPago)", pts: 18 },
@@ -70,7 +73,7 @@
                 {[{l:"✅ Features",v:completed.length,c:"#10b981"},{l:"🔴 Blockers",v:blockers.length,c:"#ef4444"},{l:"📅 Sprint",v:"1 de 4",c:"#6366f1"},{l:"🚀 Go-Live",v:"~7 sem",c:"#a855f7"}].map(s=><div key={s.l} style={card}><div style={{fontSize:"0.72rem",color:"#64748b"}}>{s.l}</div><div style={{fontSize:"1.8rem",fontWeight:800,color:s.c,marginTop:4}}>{s.v}</div></div>)}
               </div>
               <div style={{...card,padding:20}}>
-                <h3 style={{margin:"0 0 16px",color:"#10b981",fontSize:"0.9rem"}}>✅ Features Completadas ({completed.length}/10)</h3>
+                <h3 style={{margin:"0 0 16px",color:"#10b981",fontSize:"0.9rem"}}>✅ Features Completadas ({completed.length})</h3>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:8}}>
                   {completed.map((f,i)=><div key={i} style={{background:"rgba(16,185,129,0.06)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:8,padding:"8px 12px",fontSize:"0.82rem",color:"#6ee7b7"}}>✓ {f}</div>)}
                 </div>
@@ -96,7 +99,7 @@
               </div>)}
             </div>}
             <div style={{marginTop:32,textAlign:"center",color:"#334155",fontSize:"0.7rem",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:16}}>
-              Solo Cine Launch Command Center - solocine.lat - 4 Mar 2026
+              Solo Cine Launch Command Center - solocine.lat - Actualizado: 7 Mar 2026 08:00
             </div>
           </div>
         </div>
