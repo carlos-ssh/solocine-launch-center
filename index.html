@@ -32,10 +32,15 @@
       "Seguridad: eliminados logs que filtraban sesion y tokens",
       "Security OWASP: SQL injection, CSP, rate limiting, login throttle",
       "Fix prod: JWT dispatch regex + Slack subscription notifications (backend)",
-      "Fix prod: login guard, navegacion post-login, cookies de sesion (frontend)"
+      "Fix prod: login guard, navegacion post-login, cookies de sesion (frontend)",
+      "Audit trail: PaperTrail instalado + limpieza Internet Archive (#41)",
+      "Fix: catalog_tier entitlement para planes silver/gold/platinum (#40)",
+      "Fix: reset password scope-aware en DeviseCustomerMailer (#39)",
+      "Fix: non-turbo requests en admin de suscripciones (#38)"
     ];
     const blockers = [
       { label: "Payment Gateway (Stripe/MercadoPago)", pts: 18 },
+      { label: "Video Storage: Google Drive → R2/S3 CDN (#140)", pts: 13 },
       { label: "Load Testing (k6/locust)", pts: 5 },
       { label: "Backup & Recovery (runbook)", pts: 3 }
     ];
@@ -101,7 +106,7 @@
               </div>)}
             </div>}
             <div style={{marginTop:32,textAlign:"center",color:"#334155",fontSize:"0.7rem",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:16}}>
-              Solo Cine Launch Command Center - solocine.lat - Actualizado: 8 Mar 2026 06:00
+              Solo Cine Launch Command Center - solocine.lat - Actualizado: 8 Mar 2026 22:00
             </div>
           </div>
         </div>
