@@ -43,11 +43,12 @@
       "Fix: Bunny on-demand streaming hardened (#52)",
       "Fix: relay private Drive videos to Bunny on demand (#53)",
       "Fix: JWT_AUD header + auth hydration en frontend (#21)",
-      "Fix: catalog on-demand playback flow en frontend (#22)"
+      "Fix: catalog on-demand playback flow en frontend (#22)",
+      "DeltaStreaming: 4 GCP workers provisionados en northamerica-south1-a"
     ];
     const blockers = [
       { label: "Payment Gateway (Stripe/MercadoPago)", pts: 18 },
-      { label: "Video Storage: Google Drive → R2/S3 CDN (#140)", pts: 13 },
+      { label: "Video Storage R2/CDN: sprint-deltastreaming activo (PRs #59/#60 en revision)", pts: 13 },
       { label: "Load Testing (k6/locust)", pts: 5 },
       { label: "Backup & Recovery (runbook)", pts: 3 }
     ];
@@ -86,10 +87,17 @@
               <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:12,marginBottom:20}}>
                 {[{l:"✅ Features",v:completed.length,c:"#10b981"},{l:"🔴 Blockers",v:blockers.length,c:"#ef4444"},{l:"📅 Sprint",v:"1 de 4",c:"#6366f1"},{l:"🚀 Go-Live",v:"~7 sem",c:"#a855f7"}].map(s=><div key={s.l} style={card}><div style={{fontSize:"0.72rem",color:"#64748b"}}>{s.l}</div><div style={{fontSize:"1.8rem",fontWeight:800,color:s.c,marginTop:4}}>{s.v}</div></div>)}
               </div>
+              <div style={{...card,padding:20,marginBottom:16}}>
+                <h3 style={{margin:"0 0 10px",color:"#6366f1",fontSize:"0.85rem",display:"flex",alignItems:"center",gap:8}}>
+                  🔄 <span style={{color:"#a5b4fc"}}>Sprint DeltaStreaming activo</span>
+                  <span style={{fontSize:"0.72rem",background:"rgba(99,102,241,0.2)",border:"1px solid rgba(99,102,241,0.4)",borderRadius:999,padding:"2px 10px",color:"#818cf8"}}>5 issues en curso</span>
+                </h3>
+                <p style={{fontSize:"0.8rem",color:"#64748b",margin:0}}>Pipeline R2/CDN: modelo DriveVideo delta (#54), R2StorageService (#55), EncodeVideoJob (#56), FinalizeVideoJob (#57), API endpoints (#58). PRs #59 y #60 en revision.</p>
+              </div>
               <div style={{...card,padding:20}}>
                 <h3 style={{margin:"0 0 16px",color:"#10b981",fontSize:"0.9rem"}}>✅ Features Completadas ({completed.length})</h3>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:8}}>
-                  {completed.map((f,i)=><div key={i} style={{background:"rgba(16,185,129,0.06)",border:"1px solid rgba(16,185,129,0.2)",borderRadius:8,padding:"8px 12px",fontSize:"0.82rem",color:"#6ee7b7"}}>✓ {f}</div>)}
+                  {completed.map((f,i)=><div key={i} style={{background:i===completed.length-1?"rgba(99,102,241,0.1)":"rgba(16,185,129,0.06)",border:i===completed.length-1?"1px solid rgba(99,102,241,0.35)":"1px solid rgba(16,185,129,0.2)",borderRadius:8,padding:"8px 12px",fontSize:"0.82rem",color:i===completed.length-1?"#a5b4fc":"#6ee7b7"}}>✓ {f}</div>)}
                 </div>
               </div>
             </div>}
@@ -97,9 +105,12 @@
               <h3 style={{margin:"0 0 4px",color:"#ef4444",fontSize:"0.9rem"}}>🚨 Bloqueadores Criticos - Sin estos NO se lanza</h3>
               <p style={{margin:"0 0 18px",fontSize:"0.78rem",color:"#64748b"}}>Sprint 1 activo - Sem 1-2</p>
               <div style={{display:"flex",flexDirection:"column",gap:10}}>
-                {blockers.map((b,i)=><div key={i} style={{background:"rgba(239,68,68,0.08)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:10,padding:14,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                  <div style={{fontWeight:700,color:"#fca5a5"}}>{b.label}</div>
-                  <div style={{fontSize:"0.75rem",background:"rgba(239,68,68,0.15)",color:"#ef4444",padding:"3px 10px",borderRadius:999,whiteSpace:"nowrap"}}>{b.pts} pts</div>
+                {blockers.map((b,i)=><div key={i} style={{background:i===1?"rgba(99,102,241,0.08)":"rgba(239,68,68,0.08)",border:i===1?"1px solid rgba(99,102,241,0.3)":"1px solid rgba(239,68,68,0.2)",borderRadius:10,padding:14,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                  <div>
+                    <div style={{fontWeight:700,color:i===1?"#a5b4fc":"#fca5a5"}}>{b.label}</div>
+                    {i===1&&<div style={{fontSize:"0.72rem",color:"#6366f1",marginTop:4}}>🔄 En desarrollo — 4 GCP workers listos, PRs en revision</div>}
+                  </div>
+                  <div style={{fontSize:"0.75rem",background:i===1?"rgba(99,102,241,0.15)":"rgba(239,68,68,0.15)",color:i===1?"#6366f1":"#ef4444",padding:"3px 10px",borderRadius:999,whiteSpace:"nowrap",marginLeft:12}}>{b.pts} pts</div>
                 </div>)}
               </div>
             </div>}
@@ -113,7 +124,7 @@
               </div>)}
             </div>}
             <div style={{marginTop:32,textAlign:"center",color:"#334155",fontSize:"0.7rem",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:16}}>
-              Solo Cine Launch Command Center - solocine.lat - Actualizado: 10 Mar 2026 09:18
+              Solo Cine Launch Command Center - solocine.lat - Actualizado: 11 Mar 2026 08:00
             </div>
           </div>
         </div>
