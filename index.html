@@ -55,11 +55,17 @@
       "WorkerAlertJob: Slack alerts for stuck/slow/failed/disk workers — backend #137",
       "Admin: rich encoding state card — phase + % + ETA + slow/stalled badges — backend #136",
       "DeltaStreaming: pipeline completo — retry, cache, dashboard, filtros CDN y metricas de costo — backend #141",
-      "GCP Workers: source validation + normalization antes del encoding — infra #303"
+      "GCP Workers: source validation + normalization antes del encoding — infra #303",
+      "DeltaStreaming workers: watchdog + recovery fallback mergeado — infra #304",
+      "Fix: Redis timeout Cloudflare Tunnel — retry + timeouts configurables — infra #306",
+      "Multi-audio HLS: per-language audio tracks + v4 master playlist — infra #309",
+      "API: delta_audio_tracks en streaming endpoints para multi-audio player — backend #146",
+      "Tests: models Plan, Entitlement, PlanEntitlement — backend #144",
+      "API: profile, devices y wishlist endpoints — backend #143",
+      "Player: multi-audio language selector para streams HLS — frontend #29"
     ];
     const blockers = [
       { label: "Payment Gateway (Stripe/MercadoPago)", pts: 18 },
-      { label: "Video Storage R2/CDN: #303 mergeado (source validation) — #304 watchdog+recovery en revision", pts: 8 },
       { label: "Load Testing (k6/locust)", pts: 5 },
       { label: "Backup & Recovery (runbook)", pts: 3 }
     ];
@@ -96,19 +102,19 @@
             </div>
             {tab==="overview"&&<div>
               <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:12,marginBottom:20}}>
-                {[{l:"✅ Features",v:completed.length,c:"#10b981"},{l:"🚨 Blockers",v:blockers.length,c:"#ef4444"},{l:"📅 Sprint",v:"1 de 4",c:"#6366f1"},{l:"🚀 Go-Live",v:"~6 sem",c:"#a855f7"}].map(s=><div key={s.l} style={card}><div style={{fontSize:"0.72rem",color:"#64748b"}}>{s.l}</div><div style={{fontSize:"1.8rem",fontWeight:800,color:s.c,marginTop:4}}>{s.v}</div></div>)}
+                {[{l:"✅ Features",v:completed.length,c:"#10b981"},{l:"🚨 Blockers",v:blockers.length,c:"#ef4444"},{l:"📅 Sprint",v:"1 de 4",c:"#6366f1"},{l:"🚀 Go-Live",v:"~5 sem",c:"#a855f7"}].map(s=><div key={s.l} style={card}><div style={{fontSize:"0.72rem",color:"#64748b"}}>{s.l}</div><div style={{fontSize:"1.8rem",fontWeight:800,color:s.c,marginTop:4}}>{s.v}</div></div>)}
               </div>
               <div style={{...card,padding:20,marginBottom:16}}>
                 <h3 style={{margin:"0 0 10px",color:"#6366f1",fontSize:"0.85rem",display:"flex",alignItems:"center",gap:8}}>
-                  📌 <span style={{color:"#a5b4fc"}}>Sprint activo — DeltaStreaming hardening + encoding pipeline</span>
-                  <span style={{fontSize:"0.72rem",background:"rgba(99,102,241,0.2)",border:"1px solid rgba(99,102,241,0.4)",borderRadius:999,padding:"2px 10px",color:"#818cf8"}}>PR #304 en revision</span>
+                  📌 <span style={{color:"#a5b4fc"}}>Sprint activo — Entitlements System + TV Series Management</span>
+                  <span style={{fontSize:"0.72rem",background:"rgba(99,102,241,0.2)",border:"1px solid rgba(99,102,241,0.4)",borderRadius:999,padding:"2px 10px",color:"#818cf8"}}>2 epics en progreso</span>
                 </h3>
-                <p style={{fontSize:"0.8rem",color:"#64748b",margin:0}}>GCP workers: source validation+normalization mergeado (#303 ✓), watchdog+recovery (#304 abierto). Backend: DeltaStreaming pipeline completo (#141), priority queues (#138), ETA encoding (#139), worker alerts (#137), admin encoding card (#136). 10 workers activos.</p>
+                <p style={{fontSize:"0.8rem",color:"#64748b",margin:0}}>DeltaStreaming hardening completado: watchdog+recovery (#304 ✓), Redis timeout fix (#306 ✓), multi-audio HLS (#309 ✓). Activo: Sistema de Entitlements (#65/#67-#70) + TV Series Management (#71-#74). 10 GCP workers activos. Siguiente: Payment Gateway (Stripe/MercadoPago).</p>
               </div>
               <div style={{...card,padding:20}}>
                 <h3 style={{margin:"0 0 16px",color:"#10b981",fontSize:"0.9rem"}}>✅ Features Completadas ({completed.length})</h3>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:8}}>
-                  {completed.map((f,i)=><div key={i} style={{background:i>=completed.length-6?"rgba(99,102,241,0.1)":"rgba(16,185,129,0.06)",border:i>=completed.length-6?"1px solid rgba(99,102,241,0.35)":"1px solid rgba(16,185,129,0.2)",borderRadius:8,padding:"8px 12px",fontSize:"0.82rem",color:i>=completed.length-6?"#a5b4fc":"#6ee7b7"}}>✓ {f}</div>)}
+                  {completed.map((f,i)=><div key={i} style={{background:i>=completed.length-7?"rgba(99,102,241,0.1)":"rgba(16,185,129,0.06)",border:i>=completed.length-7?"1px solid rgba(99,102,241,0.35)":"1px solid rgba(16,185,129,0.2)",borderRadius:8,padding:"8px 12px",fontSize:"0.82rem",color:i>=completed.length-7?"#a5b4fc":"#6ee7b7"}}>✓ {f}</div>)}
                 </div>
               </div>
             </div>}
@@ -116,12 +122,11 @@
               <h3 style={{margin:"0 0 4px",color:"#ef4444",fontSize:"0.9rem"}}>🚨 Bloqueadores Criticos - Sin estos NO se lanza</h3>
               <p style={{margin:"0 0 18px",fontSize:"0.78rem",color:"#64748b"}}>Sprint 1 activo - Sem 1-2</p>
               <div style={{display:"flex",flexDirection:"column",gap:10}}>
-                {blockers.map((b,i)=><div key={i} style={{background:i===1?"rgba(99,102,241,0.08)":"rgba(239,68,68,0.08)",border:i===1?"1px solid rgba(99,102,241,0.3)":"1px solid rgba(239,68,68,0.2)",borderRadius:10,padding:14,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                {blockers.map((b,i)=><div key={i} style={{background:"rgba(239,68,68,0.08)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:10,padding:14,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                   <div>
-                    <div style={{fontWeight:700,color:i===1?"#a5b4fc":"#fca5a5"}}>{b.label}</div>
-                    {i===1&&<div style={{fontSize:"0.72rem",color:"#6366f1",marginTop:4}}>📌 En desarrollo — source validation mergeada, watchdog+recovery en revision</div>}
+                    <div style={{fontWeight:700,color:"#fca5a5"}}>{b.label}</div>
                   </div>
-                  <div style={{fontSize:"0.75rem",background:i===1?"rgba(99,102,241,0.15)":"rgba(239,68,68,0.15)",color:i===1?"#6366f1":"#ef4444",padding:"3px 10px",borderRadius:999,whiteSpace:"nowrap",marginLeft:12}}>{b.pts} pts</div>
+                  <div style={{fontSize:"0.75rem",background:"rgba(239,68,68,0.15)",color:"#ef4444",padding:"3px 10px",borderRadius:999,whiteSpace:"nowrap",marginLeft:12}}>{b.pts} pts</div>
                 </div>)}
               </div>
             </div>}
@@ -135,7 +140,7 @@
               </div>)}
             </div>}
             <div style={{marginTop:32,textAlign:"center",color:"#334155",fontSize:"0.7rem",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:16}}>
-              Solo Cine Launch Command Center - solocine.lat - Actualizado: 23 Mar 2026 20:31
+              Solo Cine Launch Command Center - solocine.lat - Actualizado: 24 Mar 2026 08:00
             </div>
           </div>
         </div>
