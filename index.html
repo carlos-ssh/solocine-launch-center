@@ -84,7 +84,9 @@
       "feat: Google Drive robustness — circular fallback + Shared Drives + auto-recovery — backend #179",
       "feat: VideoProgress model + sync associations + scopes started/finished — backend/infra #359",
       "feat: PWA shell + service worker + web manifest (offline support) — frontend #38",
-      "fix: iPhone Dynamic Island safe-area header styling (iOS notch compat) — frontend #38"
+      "fix: iPhone Dynamic Island safe-area header styling (iOS notch compat) — frontend #38",
+      "fix: corrige 504 en /admin/movie_master_profiles/duplicates — backend #180",
+      "fix(splash): splash infinito en Android TV / Hisense — timeout + try-catch — TV app #12"
     ];
     const blockers = [
       { label: "Load Testing (k6/locust)", pts: 5 },
@@ -130,7 +132,7 @@
                   Actividad reciente <span style={{color:"#a5b4fc"}}>5 Abr 2026</span>
                   <span style={{fontSize:"0.72rem",background:"rgba(16,185,129,0.2)",border:"1px solid rgba(16,185,129,0.4)",borderRadius:999,padding:"2px 10px",color:"#34d399"}}>HOY</span>
                 </h3>
-                <p style={{fontSize:"0.8rem",color:"#94a3b8",margin:0}}>Mergeados esta semana (1-5 Abr): feat Google Drive robustness — circular fallback + Shared Drives + auto-recovery (#179 backend), feat VideoProgress model + sync + scopes started/finished (#359 backend/infra), feat PWA shell + service worker + web manifest (#38 frontend), fix iPhone Dynamic Island safe-area header (#38 frontend). En progreso: Entitlements System (#67-#70), TV Series Management (#71-#74), MercadoPago webhook idempotente + conciliacion admin (#155-#161), Load Testing con k6. 10 GCP workers activos.</p>
+                <p style={{fontSize:"0.8rem",color:"#94a3b8",margin:0}}>Mergeados esta semana (1-5 Abr): fix 504 en admin duplicates (#180 backend), fix splash infinito Android TV / Hisense (#12 TV app), feat Google Drive robustness — circular fallback + Shared Drives + auto-recovery (#179 backend), feat VideoProgress model + sync + scopes started/finished (#359 backend/infra), feat PWA shell + service worker + web manifest (#38 frontend), fix iPhone Dynamic Island safe-area header (#38 frontend). En progreso: Entitlements System (#65-#70), TV Series Management (#71-#74), MercadoPago webhook idempotente + conciliacion admin (#155-#161), MercadoPago frontend web/mobile/TV integration, Load Testing con k6. 10 GCP workers activos.</p>
               </div>
               <div style={{...card,padding:20}}>
                 <h3 style={{margin:"0 0 16px",color:"#10b981",fontSize:"0.9rem"}}>Features Completadas ({completed.length})</h3>
@@ -159,7 +161,7 @@
               </div>)}
             </div>}
             <div style={{marginTop:32,textAlign:"center",color:"#334155",fontSize:"0.7rem",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:16}}>
-              Solo Cine Launch Command Center - solocine.lat - Actualizado: 5 Abr 2026 08:00
+              Solo Cine Launch Command Center - solocine.lat - Actualizado: 5 Abr 2026 18:00
             </div>
           </div>
         </div>
