@@ -87,7 +87,19 @@
       "fix: iPhone Dynamic Island safe-area header styling (iOS notch compat) — frontend #38",
       "fix: corrige 504 en /admin/movie_master_profiles/duplicates — backend #180",
       "fix(splash): splash infinito en Android TV / Hisense — timeout + try-catch — TV app #12",
-      "fix: sync Google Drive mejorado — delta incremental + matching + campos faltantes — backend #181"
+      "fix: sync Google Drive mejorado — delta incremental + matching + campos faltantes — backend #181",
+      "feat: landing hero slots + audio/subtitle track mapping — backend #169",
+      "fix(deltastreaming): enqueue key como active reservation en tests y prod — backend #172",
+      "fix(deltastreaming): rake task para recuperar videos Unauthorized de Drive — backend #171",
+      "feat: Drive access sales + admin fixes — backend #173",
+      "feat: reconcile Delta inventory drift — backend #174",
+      "feat: landing hero cache versionado por slot updates — backend #175",
+      "feat: device limits por suscripcion + cross-sell add-ons (familiar, devices extra) — backend #176",
+      "feat: video progress tracking API + customer response sync — backend #177/#178",
+      "feat: editorial hero carousel en mobile app (hero curado desde API) — mobile #9",
+      "feat: EntitlementService + streaming gate + catalogo filtrado — backend #66/#68/#69",
+      "feat: TV series management — TMDB panel + parent-child episodes — backend #72/#74",
+      "MercadoPago: Payment model + Checkout Pro client + webhook + activacion de acceso — backend #155-#160"
     ];
     const blockers = [
       { label: "Load Testing (k6/locust)", pts: 5 },
@@ -133,18 +145,18 @@
                   Actividad reciente <span style={{color:"#a5b4fc"}}>6 Abr 2026</span>
                   <span style={{fontSize:"0.72rem",background:"rgba(16,185,129,0.2)",border:"1px solid rgba(16,185,129,0.4)",borderRadius:999,padding:"2px 10px",color:"#34d399"}}>HOY</span>
                 </h3>
-                <p style={{fontSize:"0.8rem",color:"#94a3b8",margin:0}}>Mergeados hoy 6 Abr: fix sync Google Drive mejorado con delta incremental, matching y campos faltantes (#181 backend), backend sync PR automatico (#365 infra). Mergeados esta semana (1-6 Abr): fix 504 en admin duplicates (#180), fix splash infinito Android TV/Hisense (#12 TV app), Google Drive robustness — circular fallback + Shared Drives (#179), VideoProgress model + sync (#359 infra), PWA shell + service worker (#38 frontend), iPhone Dynamic Island safe-area fix (#38 frontend), Device limits by subscription + cross-sell add-ons (#176), Landing hero cache slot updates (#175), Reconcile Delta inventory drift (#174), Drive access sales + admin fixes (#173), MercadoPago webhook + activacion por pago (#157-#160). En progreso: Entitlements System (#65-#70), TV Series Management (#71-#74), MercadoPago admin traceability (#161), MercadoPago frontend web (#31-#34), Load Testing con k6. 10 GCP workers activos.</p>
+                <p style={{fontSize:"0.8rem",color:"#94a3b8",margin:0}}>Mergeados hoy 6 Abr: fix sync Google Drive mejorado con delta incremental, matching y campos faltantes (#181 backend), backend sync PR automatico (#365 infra), image optimization (#363 infra). Mergeados esta semana (1-6 Abr): fix 504 en admin duplicates (#180), fix splash infinito Android TV/Hisense (#12 TV app), Google Drive robustness — circular fallback + Shared Drives (#179), VideoProgress model + sync (#177/#178/#359), PWA shell + service worker (#38 frontend), iPhone Dynamic Island safe-area fix (#38 frontend), Device limits by subscription + cross-sell add-ons (#176), Landing hero cache slot updates (#175), Reconcile Delta inventory drift (#174), Drive access sales + admin fixes (#173), DeltaStreaming enqueue key fix (#172), DeltaStreaming videos recovery rake (#171), MercadoPago webhook + activacion por pago (#155-#160), EntitlementService + streaming gate (#66/#68/#69), TV series TMDB panel + episode linking (#72/#74), editorial hero en mobile app (#9). En progreso: Entitlements seeds + backfill (#67), Subscription state machine (#70), TMDB admin controllers (#73), MercadoPago admin traceability (#161), MercadoPago frontend web (#31-#34), Load Testing con k6. 10 GCP workers activos.</p>
               </div>
               <div style={{...card,padding:20}}>
                 <h3 style={{margin:"0 0 16px",color:"#10b981",fontSize:"0.9rem"}}>Features Completadas ({completed.length})</h3>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:8}}>
-                  {completed.map((f,i)=><div key={i} style={{background:i>=completed.length-7?"rgba(99,102,241,0.1)":"rgba(16,185,129,0.06)",border:i>=completed.length-7?"1px solid rgba(99,102,241,0.35)":"1px solid rgba(16,185,129,0.2)",borderRadius:8,padding:"8px 12px",fontSize:"0.82rem",color:i>=completed.length-7?"#a5b4fc":"#6ee7b7"}}>{f}</div>)}
+                  {completed.map((f,i)=><div key={i} style={{background:i>=completed.length-12?"rgba(99,102,241,0.1)":"rgba(16,185,129,0.06)",border:i>=completed.length-12?"1px solid rgba(99,102,241,0.35)":"1px solid rgba(16,185,129,0.2)",borderRadius:8,padding:"8px 12px",fontSize:"0.82rem",color:i>=completed.length-12?"#a5b4fc":"#6ee7b7"}}>{f}</div>)}
                 </div>
               </div>
             </div>}
             {tab==="blockers"&&<div style={{...card,borderColor:"rgba(239,68,68,0.3)",padding:20}}>
               <h3 style={{margin:"0 0 4px",color:"#ef4444",fontSize:"0.9rem"}}>Bloqueadores Criticos - Sin estos NO se lanza</h3>
-              <p style={{margin:"0 0 18px",fontSize:"0.78rem",color:"#64748b"}}>Sprint 1 activo - Sem 1-2 | Payment Gateway resuelto (MercadoPago en prod) | Security Audit OWASP resuelto</p>
+              <p style={{margin:"0 0 18px",fontSize:"0.78rem",color:"#64748b"}}>Sprint 1 activo - Sem 1-2 | Payment Gateway resuelto (MercadoPago en prod) | Security Audit OWASP resuelto | Entitlements parcialmente resueltos (service + gate listos, faltan seeds + state machine)</p>
               <div style={{display:"flex",flexDirection:"column",gap:10}}>
                 {blockers.map((b,i)=><div key={i} style={{background:"rgba(239,68,68,0.08)",border:"1px solid rgba(239,68,68,0.2)",borderRadius:10,padding:14,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                   <div style={{fontWeight:700,color:"#fca5a5"}}>{b.label}</div>
@@ -162,7 +174,7 @@
               </div>)}
             </div>}
             <div style={{marginTop:32,textAlign:"center",color:"#334155",fontSize:"0.7rem",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:16}}>
-              Solo Cine Launch Command Center - solocine.lat - Actualizado: 6 Abr 2026 20:45
+              Solo Cine Launch Command Center - solocine.lat - Actualizado: 6 Abr 2026 20:07
             </div>
           </div>
         </div>
