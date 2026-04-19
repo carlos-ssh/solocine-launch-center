@@ -125,6 +125,7 @@
       "fix(metadata): preserve tv_episode/tv_season content_type in MetadataMerger — backend #209",
       "feat(matching): detect mini_series from filename suffixes and strip from title — backend #210",
       "fix(nginx): forzar X-Forwarded-Proto a https — resuelve errores CSRF 422 en admin prod — infra #407",
+      "feat(workers): BACKFILL_FFMPEG_THREADS — threads independiente para backfill — infra #402",
       "fix(frontend): restaurar handleSearchSubmit en Header — fix search crash en /dashboard — infra #411"
     ];
     const blockers = [
@@ -171,7 +172,7 @@
                   Actividad reciente <span style={{color:"#a5b4fc"}}>18 Abr 2026</span>
                   <span style={{fontSize:"0.72rem",background:"rgba(16,185,129,0.2)",border:"1px solid rgba(16,185,129,0.4)",borderRadius:999,padding:"2px 10px",color:"#34d399"}}>HOY</span>
                 </h3>
-                <p style={{fontSize:"0.8rem",color:"#94a3b8",margin:0}}>Sin merges nuevos hoy 18 Abr. &Uacute;ltima actividad 17 Abr: fix(frontend) restaurar handleSearchSubmit en Header &mdash; fix crash search en /dashboard (infra #411). 15-16 Abr: fix(nginx) forzar X-Forwarded-Proto a https &mdash; resuelve CSRF 422 en admin prod (#407) &mdash; feat(matching) mini_series detection (#210) &mdash; fix(metadata) preserve tv_episode content_type (#209) &mdash; feat OAuth+Sidekiq ERB+Drive retry (#208) &mdash; fix(security) bind dev Redis/Postgres a 127.0.0.1 (#207). En curso: MercadoPago web frontend (#31-#34), Subscription state machine (#70), TV Series mgmt (#71), MercadoPago trazabilidad (#161). Bloqueadores restantes: Load Testing + Backup &amp; Recovery. Sprint 1 activo &mdash; Fase 2 Beta Cerrada comienza en ~2 semanas.</p>
+                <p style={{fontSize:"0.8rem",color:"#94a3b8",margin:0}}>Sin merges nuevos hoy 18 Abr. &Uacute;ltima actividad 17 Abr: fix(frontend) restaurar handleSearchSubmit en Header &mdash; fix crash search en /dashboard (infra #411). 15-16 Abr: feat(workers) BACKFILL_FFMPEG_THREADS threads independiente para backfill (infra #402) &mdash; fix(nginx) forzar X-Forwarded-Proto a https resuelve CSRF 422 en admin prod (#407) &mdash; feat(matching) mini_series detection (#210) &mdash; fix(metadata) preserve tv_episode content_type (#209) &mdash; feat OAuth+Sidekiq ERB+Drive retry (#208) &mdash; fix(security) bind dev Redis/Postgres a 127.0.0.1 (#207). En curso: MercadoPago web frontend (#31-#34), Subscription state machine (#70), TV Series mgmt (#71), MercadoPago trazabilidad (#161). Bloqueadores restantes: Load Testing + Backup &amp; Recovery. Sprint 1 activo &mdash; Fase 2 Beta Cerrada comienza en ~2 semanas.</p>
               </div>
               <div style={{...card,padding:20}}>
                 <h3 style={{margin:"0 0 16px",color:"#10b981",fontSize:"0.9rem"}}>Features Completadas ({completed.length})</h3>
@@ -200,7 +201,7 @@
               </div>)}
             </div>}
             <div style={{marginTop:32,textAlign:"center",color:"#334155",fontSize:"0.7rem",borderTop:"1px solid rgba(255,255,255,0.05)",paddingTop:16}}>
-              Solo Cine Launch Command Center - solocine.lat - Actualizado: 18 Abr 2026 10:27
+              Solo Cine Launch Command Center - solocine.lat - Actualizado: 18 Abr 2026 11:00
             </div>
           </div>
         </div>
